@@ -1,0 +1,21 @@
+<div class="card">
+    <h5 class="card-header"> {{genre ? genre : 'Search Results:'}}</h5>
+    <p *ngIf="showsDataByGenres.length == 0">No Results found!</p>
+    <div *ngIf="isLoadingIndicator" class="loader"></div>
+    <div *ngIf="hasError" class="error">An unexpected error happend. Please try after sometime!</div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="flex-container">
+                <carousel>
+                    <div class="carousel-cell" *ngFor="let data of showsDataByGenres">
+                        <img [routerLink]="['/show-details', data?.id]"
+                            [src]="data?.image ? data?.image?.medium : 'assets/no-poster.jpg'" style="height: 85%;" />
+                        <div class="carousel-caption" [routerLink]="['/show-details', data?.id]">
+                            <b>Rating : {{data?.rating?.average ? data?.rating?.average: 'NA'}}</b>
+                        </div>
+                    </div>
+                </carousel>
+            </div>
+        </div>
+    </div>
+</div>

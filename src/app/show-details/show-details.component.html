@@ -1,0 +1,23 @@
+<div class="show-details">
+    <button type="button" class="btn btn-outline-warning btn-sm btn-space"
+        (click)="goHome()">{{backButtonText}}</button>
+    <div *ngIf="isLoading" class="loader"><span class="spinner-border text-primary"></span></div>
+    <div *ngIf="hasError" class="error">An error occurred. Please try again after sometime!</div>
+    <div class="row" *ngIf="showDetails?.name">
+        <img [src]="showDetails?.image ? showDetails?.image?.medium : 'assets/no-poster.jpg'" class="rounded">
+        <div class="col-md-6">
+            <p><b>Title</b> : {{showDetails?.name}}</p>
+            <p><b>Language</b> : {{showDetails?.language}}</p>
+            <p><b>Average Rating</b> : {{showDetails?.rating?.average ? showDetails?.rating?.average : 'NA'}}/10</p>
+            <p><b>Genre</b> : {{showDetails?.genres?.join(', ')}}</p>
+            <p><b>Official site</b> : <span *ngIf="!showDetails?.officialSite">NA</span> <a
+                    *ngIf="showDetails?.officialSite" [href]="showDetails.officialSite"
+                    target="_blank">{{showDetails?.officialSite}}</a></p>
+            <p><b>Premiered</b> : {{showDetails?.premiered | date:'MMM d, y'}}</p>
+            <p><b>Runtime</b> : {{showDetails?.runtime ? showDetails?.runtime: 'NA'}}</p>
+            <p><b>Status</b> : {{showDetails?.status?showDetails?.status:'NA' }}</p>
+            <p><b>Type</b> : {{showDetails?.type? showDetails?.type: 'NA'}}</p>
+            <p><b>Scheduled</b> : {{showDetails?.schedule?.days?.join(', ')}} at {{showDetails?.schedule?.time}}</p>
+        </div>
+    </div>
+</div>

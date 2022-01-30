@@ -1,0 +1,26 @@
+<!-- Dashboard showing all TV Shows based on genres and Rating -->
+<div>
+    <div *ngIf="isLoadingIndicator" class="loader"><span class="spinner-border text-primary"></span></div>
+    <div class="topnav">
+        <div class="row">
+            <div class="col-lg-3 col-lg-offset-4 w-75 mx-auto">
+                <div class="input-group">
+                    <input class="form-control" type="text" placeholder="Search for Show..." name="searchData"
+                        [(ngModel)]="searchData" required>
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-outline-secondary" (click)="goToSearch(searchData)"
+                            [disabled]="!searchData">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ng-container>
+        <app-show-list [genresType]="'Drama'" [searchResults]="dramaData"></app-show-list>&nbsp;
+        <app-show-list [genresType]="'Comedy'" [searchResults]="comedyData"></app-show-list>&nbsp;
+        <app-show-list [genresType]="'Action'" [searchResults]="actionData"></app-show-list>&nbsp;
+        <app-show-list [genresType]="'Sports'" [searchResults]="sportsData"></app-show-list>&nbsp;
+    </ng-container>
+</div>
