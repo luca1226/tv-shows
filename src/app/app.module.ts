@@ -8,12 +8,18 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ShowListComponent } from './show-list/show-list.component';
 import { FormsModule } from '@angular/forms';
+import { SearchListComponent } from './search-list/search-list.component';
+import { ShowDetailsComponent } from './show-details/show-details.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
-    ShowListComponent
+    ShowListComponent,
+    SearchListComponent,
+    ShowDetailsComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
