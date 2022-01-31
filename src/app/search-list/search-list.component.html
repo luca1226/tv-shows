@@ -6,13 +6,12 @@
         <div *ngIf="isLoadingIndicator" class="loader"><span class="spinner-border text-primary"></span></div>
         <div *ngIf="hasError" class="card-header">An unexpected error happend. Please try after sometime!</div>
         <div class="row" *ngIf="searchResults.length > 0">
-            <div class="thumbs col-lg-12">
-                <div class="flex-container">
+            <div class="col-lg-12">
+                <div>
                     <carousel>
                         <div class="carousel-cell" *ngFor="let data of searchResults">
                             <img [routerLink]="['/show-details', data?.id]"
-                                [src]="data?.image ? data?.image?.medium : 'assets/no-poster.jpg'"
-                                class="rounded-circle" style="height: 85%;" />
+                                [src]="data?.image ? data?.image?.medium : 'assets/no-poster.jpg'" style="height: 85%;" />
                             <div class="carousel-caption" [routerLink]="['/show-details', data?.id]">
                                 Rating : {{data?.rating?.average ? data?.rating?.average: 'NA' }}
                             </div>
