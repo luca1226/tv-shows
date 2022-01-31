@@ -11,6 +11,7 @@ import { ApiService } from '../service/api.service';
 export class ShowDetailsComponent implements OnInit {
   id: any;
   showDetails!: Shows;
+  castDetails!:any;
   hasError = false;
   isLoading = false;
   searchValue!: string;
@@ -30,6 +31,7 @@ ngOnInit(): void {
       this.backButtonText = "Go Dashboard";
     }
     this.searchDetails();
+    this.getCastDetails(); 
 }
 /**
  * This method fetches the details of selected show from service.
@@ -64,5 +66,24 @@ searchDetails(){
       this.router.navigate(['/dashboard']);
     }
   }
+
+    /**
+     * This method fetches the Cast Details of selected show from service.
+     */
+    getCastDetails(){
+      this.apiService.getShowCast(this.id).subscribe(
+        (data) => {
+          this.castDetails = data;
+          this.hasError = false;
+        },
+        (error) => {
+          this.hasError = true;
+          this.isLoading = false;
+        },
+        () => {
+          this.isLoading = false;
+        }
+      );
+    }
 
 }

@@ -29,11 +29,20 @@ export class ApiService {
   }
 
   /**
-   * This method fetch details based on the show id provided
+   * This method fetch details based on the show id provided.
    * @param id - id of the show 
    * @returns 
    */
   getShowDetails(id: number): Observable<any> {
     return this.http.get(`${environment.backendURL}shows/${id}`);
+  }
+
+  /**
+   * This method fetch details based on the show id provided.
+   * @param id - id of the show
+   * @returns 
+   */
+  getShowCast(id: number): Observable<any> {
+    return this.http.get(`${environment.backendURL}shows/${id}/cast`);
   }
 }

@@ -3,7 +3,7 @@
         (click)="goHome()">{{backButtonText}}</button>
     <div *ngIf="isLoading" class="loader"><span class="spinner-border text-primary"></span></div>
     <div *ngIf="hasError" class="error">An error occurred. Please try again after sometime!</div>
-    <div class="row" *ngIf="showDetails?.name">
+    <div class="row details" *ngIf="showDetails?.name">
         <img [src]="showDetails?.image ? showDetails?.image?.medium : 'assets/no-poster.jpg'" class="rounded">
         <div class="col-md-6">
             <p><b>Title</b> : {{showDetails?.name}}</p>
@@ -18,6 +18,23 @@
             <p><b>Status</b> : {{showDetails?.status?showDetails?.status:'NA' }}</p>
             <p><b>Type</b> : {{showDetails?.type? showDetails?.type: 'NA'}}</p>
             <p><b>Scheduled</b> : {{showDetails?.schedule?.days?.join(', ')}} at {{showDetails?.schedule?.time}}</p>
+        </div>
+    </div>
+    <div class="row">
+        <h3>Cast Details</h3>
+        <h4 class="card-header" *ngIf="castDetails?.length == 0">No Results found!</h4>
+        <br><br>
+        <div class="thumbs col-lg-12" *ngIf="castDetails?.length !== 0">
+            <div class="flex-container">
+                <carousel>
+                    <div class="carousel-cell" *ngFor="let data of castDetails">
+                        <img [src]="data?.character?.image ? data?.character?.image?.medium : 'assets/no-poster.jpg'" />
+                        <div class="carousel-caption" [routerLink]="['/show-details', data?.id]">
+                            <b>{{data?.person?.name}}</b>
+                        </div>
+                    </div>
+                </carousel>
+            </div>
         </div>
     </div>
 </div>
