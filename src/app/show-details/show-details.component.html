@@ -17,7 +17,8 @@
             <p><b>Runtime</b> : {{showDetails?.runtime ? showDetails?.runtime: 'NA'}}</p>
             <p><b>Status</b> : {{showDetails?.status?showDetails?.status:'NA' }}</p>
             <p><b>Type</b> : {{showDetails?.type? showDetails?.type: 'NA'}}</p>
-            <p><b>Scheduled</b> : {{showDetails?.schedule?.days?.join(', ')}} at {{showDetails?.schedule?.time}}</p>
+            <b>Summary: </b>
+            <div [innerHTML]="showDetails?.summary? showDetails?.summary: 'NA'"></div>
         </div>
     </div>
     <div class="row">
